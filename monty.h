@@ -18,9 +18,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -33,13 +33,45 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+#define BUFF_SIZE 1024
 #define IN_QUEUE 1
 #define IN_STACK 0
 
 int struct_state;
+
+void readm(int);
+void execm(char *, unsigned int, stack_t **);
+char *_opcode(char *line);
+void (*_instruction(char *opcode))(stack_t **, unsigned int);
+void push_(stack_t **stack, unsigned int line_order);
+stack_t *addto_tos(stack_t **stack, int n);
+void pall_(stack_t **stack, __attribute__((unused))unsigned int line_order);
+ssize_t _getline1(char **, size_t *, int);
+void free_stk(stack_t *stack);
+int atoi_(char *nptr, char **endptr, int base);
+void pop_(stack_t **, unsigned int);
+void added(stack_t **stack, unsigned int line_order);
+void pint_2(stack_t **stack, __attribute__((unused))unsigned int line_order);
+stack_t *pop_2(stack_t **stack, unsigned int line_order);
+void swap_(stack_t **stack, unsigned int line_order);
+void nop_(stack_t **stack, unsigned int line_order);
+void subtract(stack_t **stack, unsigned int line_order);
+void multiply(stack_t **stack, unsigned int line_order);
+unsigned int vide(char *buffer);
+void p_str(stack_t **stack, unsigned int line_order);
+void rotate(stack_t **stack, unsigned int line_order);
+void nop_(stack_t **stack, unsigned int line_order);
+void divise(stack_t **stack, unsigned int line_order);
+void modulo(stack_t **stack, unsigned int line_order);
+void p_char(stack_t **stack, unsigned int line_order);
+void rotate_l(stack_t **stack, unsigned int line_order);
+void stack(stack_t **stack, __attribute__((unused))unsigned int line_order);
+void queue_(stack_t **stack, __attribute__((unused))unsigned int line_order);
+stack_t *addto_q(stack_t **stack, int n);
+void *_reallocate(void *p, unsigned int old_s, unsigned int new_s);
 
 #endif
